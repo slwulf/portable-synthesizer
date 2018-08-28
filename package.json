@@ -4,12 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel index.html",
+    "pretest": "npm run build:test",
+    "test": "mocha test",
+    "test:watch": "echo \"No really, there's no tests yet\" && exit 1",
     "build": "parcel build index.html",
     "build:lib": "parcel build src/index.js -d lib",
-    "watch": "parcel watch index.html",
-    "watch:lib": "parcel watch src/index.js -d lib"
+    "build:test": "parcel build src/index.js -d test/build",
+    "build:watch": "parcel watch index.html",
+    "build:lib:watch": "parcel watch src/index.js -d lib"
   },
   "repository": {
     "type": "git",
@@ -23,6 +26,10 @@
   },
   "homepage": "https://github.com/austinwulf/portable-synthesizer#readme",
   "devDependencies": {
-    "parcel-bundler": "^1.9.7"
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
+    "parcel-bundler": "^1.9.7",
+    "sinon": "^6.1.5",
+    "sinon-chai": "^3.2.0"
   }
 }

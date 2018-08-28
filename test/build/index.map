@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.js"],"names":["thing"],"mappings":";AAEC,aAFc,SAASA,IACf,OAAA,EACR,OAAA,eAAA,QAAA,aAAA,CAAA,OAAA,IAFuBA,QAAAA,QAAAA","file":"index.map","sourceRoot":"../../src","sourcesContent":["export default function thing() {\n  return false\n}\n"]}
