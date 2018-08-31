@@ -1,1 +1,4 @@
-[1, 2, 3, 'GO!'].map(n => console.log(n));
+import Synthesizer from './src'
+
+const Context = window.AudioContext || window.webkitAudioContext
+const synth = Synthesizer(Context)
