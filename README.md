@@ -3,15 +3,17 @@
 
 this is nothing yet! come watch me make it into *something* live on [my twitch channel](https://www.twitch.tv/atwulf) sundays at 3pm est
 
-#### what i did last time
-- nothing! i haven't streamed this yet
+#### what i did on the last stream
+- added an `Oscillator` class to manage oscillators
+- implemented `Synthesizer#play` and `Synthesizer#stop` to take into account `Synthesizer#setTone` calls
+- started to create "testing ground" page for demoing the synth
 
 #### what i did before this stream
-- set up the repo to be write, test and build ready
-- defined an api for the library to start with
+- nothing yet, the stream just wrapped! [watch the vod](https://www.twitch.tv/videos/305071577)
 
 #### what i'm doing on this stream
-- implementing oscillators and noise machines
-- making a "testing ground" page for demoing the synth
+- finishing up the basic keymapping stuff for the "testing ground"
+- implementing noises (counterpart to oscillators)
+- adding some tests
 
 ![](https://media.giphy.com/media/Hcw7rjsIsHcmk/giphy.gif) ![](https://media.giphy.com/media/LHZyixOnHwDDy/giphy.gif)
