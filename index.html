@@ -7,15 +7,24 @@
   <title>tmp</title>
 </head>
 <body>
-  <!--
-    you know what would be cool here? having the ability to
-    bind arbitrary keys to arbitrary notes/sound names on screen
-    like:
-    [KeyA] => [snare]
-    where left box listens for keyup and prints the keycode,
-    right box takes arbitrary input, and on change those are
-    remapped or whatever. that would be helpful.
-  -->
+  <div class="key-binding">
+    <input type="text" data-key-binding="1">
+    <span><=></span>
+    <input type="text" data-note="1">
+  </div>
+
+  <div class="key-binding">
+      <input type="text" data-key-binding="2">
+      <span><=></span>
+      <input type="text" data-note="2">
+    </div>
+
+    <div class="key-binding">
+        <input type="text" data-key-binding="3">
+        <span><=></span>
+        <input type="text" data-note="3">
+      </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <script src="./index.js"></script>
 </body>
 </html>
