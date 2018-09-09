@@ -14,6 +14,15 @@ synth.setTone({
   }]
 })
 
+synth.addSound('snare', {
+  oscillators: [{ frequency: 150, volume: 0.5, decay: 0.2, decayNote: true }],
+  noises: [{ frequency: 750, volume: 1, decay: 0.2 }]
+})
+
+synth.addSound('kick', {
+  oscillators: [{ frequency: 150, volume: 2, decay: 0.5, decayNote: true }]
+})
+
 function createKeybindingThing(id) {
   const $template = $(`
     <div class="key-binding">
@@ -26,7 +35,7 @@ function createKeybindingThing(id) {
   return $template
 }
 
-$('input[data-key-binding]').on('keyup', event => {
+$(document).on('keyup', 'input[data-key-binding]', event => {
   const key = event.key
   event.preventDefault()
   event.target.value = ''
@@ -38,15 +47,22 @@ $('input[data-key-binding]').on('keyup', event => {
   $(event.target).next('[data-note]').data('note', id)
 })
 
-$('input[data-note]').on('change', event => {
+$(document).on('change', 'input[data-note]', event => {
   const value = event.target.value
   const key = $(event.target).parent().find('[data-key-binding]').val()
   console.log(value)
   keymap[key] = value
 })
 
+$(document).on('blur', 'input[data-note]:last-child', event => {
+  if (!event.target.value) return;
+  const $template = createKeybindingThing(Date.now())
+  $('.key-bindings').append($template)
+})
+
 $(document).on('keydown', event => {
   if ($('input:focus').length > 0) return;
+  if (event.key === 'Meta') return;
   event.preventDefault()
 
   const note = keymap[event.key]
@@ -56,6 +72,7 @@ $(document).on('keydown', event => {
 
 $(document).on('keyup', event => {
   if ($('input:focus').length > 0) return;
+  if (event.key === 'Meta') return;
   event.preventDefault()
 
   const note = keymap[event.key]
