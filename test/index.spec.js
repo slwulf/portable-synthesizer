@@ -9,8 +9,8 @@ describe('Synthesizer', () => {
     expect(FakeAudioContext).to.have.been.calledOnce
   })
 
-  describe.only('#play', () => {
+  describe('#play', () => {
     const synth = Synthesizer(sinon.spy())
-    synth.play('C4')
+    // synth.play('C4')
   })
 })
