@@ -1,26 +1,50 @@
 export default function Oscillator(context, {
   frequency,
   waveform = 'sine',
-  volume = 1
+  volume = 1,
+  decay = 0,
+  decayNote = false
 }) {
   this.context = context
   this.frequency = frequency
   this.waveform = waveform
   this.volume = volume
+  this.decay = decay
+  this.decayNote = decayNote
 }
 
-Oscillator.prototype.play = function() {
+Oscillator.prototype.play = function(decayNow) {
+  const now = this.context.currentTime
   this.node = createOscillator(this.context, this.frequency, this.waveform)
   this.node.volume.gain.value = this.volume
+
+  this.node.oscillator.start(now)
+
+  if (this.decay && decayNow) {
+    this.stop()
+  }
 }
 
 Oscillator.prototype.stop = function() {
-  this.node.volume.gain.value = 0
-  this.node = null
-}
+  const now = this.context.currentTime
 
-Oscillator.prototype.setFrequency = function(frequency) {
-  this.frequency = frequency
+  if (this.node === null) return
+
+  if (this.decay) {
+    this.node.volume.gain.exponentialRampToValueAtTime(0.001, now + this.decay)
+
+
+    if (this.decayNote) {
+      this.node.oscillator.frequency.exponentialRampToValueAtTime(0.001, now + this.decay)
+    }
+
+    this.node.oscillator.stop(now + this.decay)
+  } else {
+    this.node.volume.gain.value = 0
+    this.node.oscillator.stop(now + 1)
+  }
+
+  this.node = null
 }
 
 function createOscillator(context, frequency, waveform) {
@@ -33,7 +57,6 @@ function createOscillator(context, frequency, waveform) {
 
   oscillator.connect(volume)
   volume.connect(context.destination)
-  oscillator.start(0)
 
   return { oscillator, volume }
 }
