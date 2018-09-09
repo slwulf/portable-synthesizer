@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "parcel index.html",
-    "pretest": "npm run build:test",
-    "test": "mocha test",
+    "test": "NODE_ENV=test mocha test/setup.js test/*.spec.js --require babel-core/register",
     "posttest": "rm -rf ./test/build",
     "pretest:watch": "npm run pretest",
     "test:watch": "mocha --watch test",

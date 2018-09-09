@@ -1,8 +1,6 @@
-const Synthesizer = require('./build').default
-const chai = require('chai')
-const sinon = require('sinon')
-const {expect} = chai
-chai.use(require('sinon-chai'))
+import {expect} from 'chai'
+import sinon from 'sinon'
+import Synthesizer from '../src/index.js'
 
 describe('Synthesizer', () => {
   it('instantiates the AudioContext', () => {
