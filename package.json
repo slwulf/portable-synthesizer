@@ -6,10 +6,7 @@
   "scripts": {
     "start": "parcel index.html",
     "test": "NODE_ENV=test mocha test/setup.js test/*.spec.js --require babel-core/register",
-    "posttest": "rm -rf ./test/build",
-    "pretest:watch": "npm run pretest",
-    "test:watch": "mocha --watch test",
-    "posttest:watch": "npm run posttest",
+    "test:watch": "NODE_ENV=test mocha test/setup.js test/*.spec.js --watch --require babel-core/register",
     "build": "parcel build index.html",
     "build:lib": "parcel build src/index.js -d lib",
     "build:test": "parcel build src/index.js -d test/build",
