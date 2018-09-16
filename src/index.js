@@ -5,7 +5,7 @@ import Noise from './noise.js';
 export default function Synthesizer(Context) {
   const context = new Context()
   const nodes = {}
-  let tone = {}
+  let tone = {oscillators: [], noises: []}
   let sounds = {}
 
   return {
@@ -38,19 +38,24 @@ export default function Synthesizer(Context) {
       oscillators.forEach(osc => osc.stop())
     },
 
-    setTone({oscillators = [], noises = []}) {
+    setTone({oscillators = [], noises = []} = {}) {
       tone.oscillators = oscillators
       tone.noises = noises
     },
 
-    addSound(name, {oscillators = [], noises = []}) {
+    addSound(name, {oscillators = [], noises = []} = {}) {
       sounds[name] = {
         oscillators: createOscillators(context, oscillators),
         noises: createNoises(context, noises)
       }
     },
 
-    removeSound(name) {}
+    removeSound(name) {
+      const success = delete sounds[name]
+      if (!success) {
+        throw new Error(`Could not delete sound named ${name}.`)
+      }
+    }
   }
 }
 
