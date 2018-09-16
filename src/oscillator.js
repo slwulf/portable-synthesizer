@@ -4,13 +4,14 @@ export default function Oscillator(context, {
   volume = 1,
   decay = 0,
   decayNote = false
-}) {
+} = {}) {
   this.context = context
   this.frequency = frequency
   this.waveform = waveform
   this.volume = volume
   this.decay = decay
   this.decayNote = decayNote
+  this.node = null
 }
 
 Oscillator.prototype.play = function(decayNow) {
