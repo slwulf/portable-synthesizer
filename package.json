@@ -1,7 +1,7 @@
 {
   "name": "portable-synthesizer",
   "version": "1.0.0",
-  "description": "",
+  "description": "making sounds with javascript 🎹🎼🎶",
   "main": "index.js",
   "scripts": {
     "start": "parcel index.html",
@@ -19,7 +19,7 @@
   },
   "keywords": [],
   "author": "atwulf <atwulf@gmail.com> (http://atwulf.io)",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/austinwulf/portable-synthesizer/issues"
   },
