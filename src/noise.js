@@ -3,7 +3,7 @@ export default function Noise(context, {
   frequency = 0,
   decay = 0,
   filter = 'highpass'
-}) {
+} = {}) {
   this.context = context
   this.frequency = frequency
   this.volume = volume

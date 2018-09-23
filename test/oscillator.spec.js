@@ -9,7 +9,7 @@ import {
   mockGain
 } from './helper.js'
 
-describe.only('Oscillator', () => {
+describe('Oscillator', () => {
   const oscillatorConnect = sinon.spy()
   const gainConnect = sinon.spy()
   const start = sinon.spy()
