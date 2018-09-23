@@ -20,8 +20,7 @@ export default function Synthesizer(Context) {
       const freq = note.frequency
 
       nodes[freq] = createOscillators(context, tone.oscillators, freq)
-      const oscillators = nodes[freq]
-      oscillators.forEach(osc => osc.play())
+      nodes[freq].forEach(osc => osc.play())
     },
 
     stop(name) {
@@ -33,9 +32,12 @@ export default function Synthesizer(Context) {
 
       const note = new Note(name)
       const freq = note.frequency
-      const oscillators = nodes[freq]
 
-      oscillators.forEach(osc => osc.stop())
+      if (nodes[freq] === undefined) {
+        throw new Error(`Cannot stop note ${name} before it is played.`)
+      }
+
+      nodes[freq].forEach(osc => osc.stop())
     },
 
     setTone({oscillators = [], noises = []} = {}) {
