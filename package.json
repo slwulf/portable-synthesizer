@@ -1,8 +1,8 @@
 {
   "name": "portable-synthesizer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "making sounds with javascript 🎹🎼🎶",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "start": "parcel index.html",
     "test": "NODE_ENV=test mocha test/setup.js test/*.spec.js --require babel-core/register",
